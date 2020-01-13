@@ -1,4 +1,8 @@
 # Hysia Video to Online Platform \[V1.0\]
+<sub>* This project is supported by 
+[Cloud Application and Platform Lab](https://wiki.withcap.org) 
+led by [Prof. Yonggang Wen](https://www.ntu.edu.sg/home/ygwen/)</sub>  
+
 An intelligent multimodal-learning based system for video, product and ads analysis. You can build various downstream 
 applications with the system, such as product recommendation, video retrieval. Several examples are provided.
 
@@ -19,7 +23,8 @@ into V2.
 8. [Todo List](#todo-list)
 9. [Credits](#credits)
 10. [Contribute to Hysia-V2O](#contribute-to-hysia-v2o)
-11. [About Us](#about-us)
+11. [Paper Citation](#paper-citation)
+12. [About Us](#about-us)
 
 ## Highlights
 - Multimodal learning-based video analysis:
@@ -140,7 +145,10 @@ bash ./scripts/install-build.sh
 cd ..
 ```
 
-#### Option 2. Step-by-step installation 
+#### Option 2: Docker  
+See [Run with Docker](docker/README.md) to build and install. 
+
+#### Option 3. Step-by-step installation 
 ```shell script
 # Firstly, make sure that your Conda is setup correctly and have CUDA,
 # CUDNN installed on your system.
@@ -178,12 +186,12 @@ make PYTHON=python
 # Initialize Django
 # This will prompt some input from you
 cd "${BASE_DIR}"/server
+python -m grpc_tools.protoc -I . --python_out=. --grpc_python_out=. protos/api2msl.proto
+
 python manage.py makemigrations restapi
 python manage.py migrate
 python manage.py loaddata dlmodels.json
 python manage.py createsuperuser
-
-python -m grpc_tools.protoc -I . --python_out=. --grpc_python_out=. protos/api2msl.proto
 
 unset BASE_DIR
 ```
@@ -196,9 +204,6 @@ Option 1: auto-rebuild
 cd server/react-build
 bash ./build.sh
 ```
-
-Option 2: Docker  
-See [Run with Docker](docker/README.md) to build and install. 
 
 Option 2: Step-by-step rebuild  
 ```shell script
@@ -295,6 +300,11 @@ Here is a list of models that we used in Hysia-V2O.
 ## Contribute to Hysia-V2O
 
 You are welcome to pull request. We will credit it in our version 2.0.
+
+## Paper Citation
+
+Coming soon!
+
 
 ## About Us
 
